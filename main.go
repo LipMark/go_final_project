@@ -3,12 +3,17 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 )
 
 func main() {
-	port := os.Getenv("TODO_PORT")
-	err := http.ListenAndServe(port, nil)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, World!")
+	})
+	// port from outside
+	// .env file => loader
+
+	// handlers === > controllers
+	err := http.ListenAndServe(":7540", nil)
 	if err != nil {
 		panic(err)
 	}
