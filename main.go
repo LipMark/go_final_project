@@ -6,12 +6,14 @@ import (
 )
 
 func main() {
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, World!")
 	})
 	// port from outside
 	// .env file => loader
 
+	// check data
 	// handlers === > controllers
 	err := http.ListenAndServe(":7540", nil)
 	if err != nil {
